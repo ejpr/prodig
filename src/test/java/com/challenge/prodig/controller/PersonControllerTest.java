@@ -116,7 +116,7 @@ class PersonControllerTest {
         // AND
         ArgumentCaptor<Pageable> pageableArgumentCaptor = ArgumentCaptor.forClass(Pageable.class);
         verify(personService, times(1)).getPersons(pageableArgumentCaptor.capture());
-        assertEquals(1, pageableArgumentCaptor.getValue().getPageNumber());
+        assertEquals(0, pageableArgumentCaptor.getValue().getPageNumber());
         assertEquals(20, pageableArgumentCaptor.getValue().getPageSize());
 
     }

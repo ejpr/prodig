@@ -20,20 +20,20 @@ public class PersonDTO {
     private Long id;
 
     @Schema(implementation = DocumentType.class, oneOf = DocumentType.class)
-    @NotNull
+    @NotBlank(message = "invalid")
     private String documentType;
 
     @Schema(example = "20304061")
     @NotBlank
-    @Size(min = 1, max = 12, message = "Document Number must be between 1 and 12 characters")
+    @Size(min = 1, max = 12, message = "must be between 1 and 12 characters")
     private String documentNumber;
 
     @Schema(example = "1994-01-20")
     @DateTimeFormat(pattern = "YYYY-MM-DD")
-    @Past(message = "Birth date must be past")
+    @Past(message = "must be past")
     private Date birthDate;
 
     @Schema(example = "youremail@example.com")
-    @Email(message = "Email should be valid")
+    @Email(message = "should be valid")
     private String email;
 }

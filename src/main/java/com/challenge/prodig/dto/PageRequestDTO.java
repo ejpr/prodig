@@ -6,8 +6,8 @@ import lombok.Data;
 @Data
 public class PageRequestDTO {
 
-    @Schema(example = "1", defaultValue = "1")
-    private Integer page = 1;
+    @Schema(example = "0", defaultValue = "0")
+    private Integer page = 0;
 
     @Schema(example = "20", defaultValue = "20")
     private Integer size = 20;

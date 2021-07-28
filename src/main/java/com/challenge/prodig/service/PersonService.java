@@ -7,5 +7,13 @@ import com.challenge.prodig.model.Person;
 
 public interface PersonService {
 
-   Page<Person> getPersons(Pageable pageable);
+    Page<Person> getPersons(Pageable pageable);
+
+    Person savePerson(Person person);
+
+    Person updatePerson(Person person);
+
+    Person deletePerson(Long id);
+
+    Person getPersonById(Long id);
 }

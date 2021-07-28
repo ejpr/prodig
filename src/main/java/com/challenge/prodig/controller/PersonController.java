@@ -33,7 +33,6 @@ public class PersonController {
     public ResponseEntity<Page<PersonDTO>> getPersons(PageRequestDTO pageRequestDTO) {
 
         PageRequest pageRequest = PageableMapper.INSTANCE.mapPageRequestDTO(pageRequestDTO);
-
         Page<Person> persons = personService.getPersons(pageRequest);
         Page<PersonDTO> result = persons.map(PersonMapper.INSTANCE::mapToDTO);
 
@@ -42,20 +41,30 @@ public class PersonController {
 
     @PostMapping
     public ResponseEntity<PersonDTO> addPerson(@Valid @RequestBody PersonDTO personDTO) {
-        // TODO implement
-        return ResponseEntity.ok(personDTO);
+        Person person = personService.savePerson(PersonMapper.INSTANCE.mapToEntity(personDTO));
+        PersonDTO dto = PersonMapper.INSTANCE.mapToDTO(person);
+        return ResponseEntity.ok(dto);
     }
 
     @DeleteMapping(path = "{id}")
     public ResponseEntity<PersonDTO> deletePersonById(@PathParam("id") Long id) {
-        // TODO implement
-        return ResponseEntity.ok(new PersonDTO());
+        Person person = personService.deletePerson(id);
+        PersonDTO deletedPerson = PersonMapper.INSTANCE.mapToDTO(person);
+        return ResponseEntity.ok(deletedPerson);
     }
 
     @PutMapping
     public ResponseEntity<PersonDTO> updatePerson(@Valid @RequestBody PersonDTO personDTO) {
-        // TODO implement
-        return ResponseEntity.ok(personDTO);
+        Person person = personService.updatePerson(PersonMapper.INSTANCE.mapToEntity(personDTO));
+        PersonDTO dto = PersonMapper.INSTANCE.mapToDTO(person);
+        return ResponseEntity.ok(dto);
+    }
+
+    @GetMapping(path = "{id}")
+    public ResponseEntity<PersonDTO> getPersonById(@PathParam("id") Long id) {
+        Person person = personService.getPersonById(id);
+        PersonDTO dto = PersonMapper.INSTANCE.mapToDTO(person);
+        return ResponseEntity.ok(dto);
     }
 
 }

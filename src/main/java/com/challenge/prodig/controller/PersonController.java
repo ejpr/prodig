@@ -53,7 +53,7 @@ public class PersonController {
     }
 
     @PutMapping
-    public ResponseEntity<PersonDTO> deletePersonById(@Valid @RequestBody PersonDTO personDTO) {
+    public ResponseEntity<PersonDTO> updatePerson(@Valid @RequestBody PersonDTO personDTO) {
         // TODO implement
         return ResponseEntity.ok(personDTO);
     }
